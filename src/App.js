@@ -5,10 +5,6 @@ import Navigation from "./components/Navigation";
 import ProviderSearch from "./pages/providerSearch";
 
 function App() {
-
-    
-
-
     return (
         <BrowserRouter>
             <div className="app">

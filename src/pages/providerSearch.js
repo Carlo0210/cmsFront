@@ -56,13 +56,14 @@ function ProviderSearch() {
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [error, setError] = useState(null);
-  
+
   // Close modal function
   const handleCloseModalListNotes = () => {
     setModalOpen(false);
     setSelectedProvider(null);
     setNote('');
   };
+  
   const handleAddNote = (provider) => {
     setSelectedProvider(provider);
     setShowModal(true);
@@ -385,6 +386,15 @@ useEffect(() => {
     document.body.removeChild(link);
   };
 
+  const filteredResults = currentResults.filter(provider => {
+    return provider.notes.some(note => {
+      if (noteAttempts === 'Default') {
+        return !note.noteAttempts; // Show if noteAttempts is empty
+      }
+      return note.noteAttempts === noteAttempts; // Match the selected noteAttempt
+    });
+  });
+  
   return (
     <Container style={{ marginTop: '30px' }}>
       <Row className="justify-content-center">
@@ -560,6 +570,9 @@ useEffect(() => {
           {provider.phones.map((phone, index) => (
             <p key={index}><strong>{phone.phoneType} Phone:</strong> {phone.phoneNumber}</p>
           ))}
+          {provider.notes.map((notes, index) => (
+            <p key={index}><strong>Note attempt:</strong> {notes.noteAttempts}</p>
+          ))}
         </Col>
         <Col md={4}>
           {provider.addresses.map((address) => (
@@ -607,9 +620,9 @@ useEffect(() => {
         className="mb-3"
       >
         <option value="Default">Default</option>
-        <option value="First attempt">First attempt</option>
-        <option value="Second attempt">Second attempt</option>
-        <option value="Third attempt">Third attempt</option>
+        <option value="First Attempt">First Attempt</option>
+        <option value="Second Attempt">Second Attempt</option>
+        <option value="Third Attempt">Third Attempt</option>
       </Form.Select>
     </Form.Group>
 
@@ -653,7 +666,7 @@ useEffect(() => {
           <TableHead>
             <TableRow>
               <TableCell className='text-center'><strong>Created By</strong></TableCell>
-              <TableCell className='text-center'><strong>Note</strong></TableCell>
+              <TableCell className='text-center'><strong>Note Text</strong></TableCell>
               <TableCell className='text-center'><strong>Date</strong></TableCell>
               <TableCell className='text-center'><strong>Attempt</strong></TableCell>
             </TableRow>

@@ -347,7 +347,7 @@
 
 .modal-title {
   font-weight: 600;
-  color: #343a40;
+  color: #f1f1f1;
   font-size: 1.75rem;
 }
 
@@ -435,7 +435,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   background-color: #10294b;
-  color: #dfe6e9;
+  color: #ffffff;
   text-align: center;
   padding-bottom: 10px;
   text-transform: capitalize;
