@@ -20,7 +20,7 @@ function App() {
                         <div className="inner-content">
                             <Routes>
                                 <Route path="/" element={<RenderLoginIfNotLoggedIn />} />
-                                <Route path="/provider" element={<ProviderSearch />} />
+                                <Route path="/search" element={user ? <ProviderSearch /> : <Navigate to="/" />} />
                             </Routes>
                         </div>
                     </main>

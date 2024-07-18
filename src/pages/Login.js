@@ -33,13 +33,13 @@ function Login() {
         // Navigate based on the user type
         switch (userType) {
           case "Admin":
-            navigate("/provider");
+            navigate("/search");
             break;
-          case "Usertype":
-            navigate("/provider");
+          case "User":
+            navigate("/search");
             break;
           default:
-            navigate("/404"); // Navigate to the dashboard by default
+            navigate("/"); // Navigate to the dashboard by default
             break;
         }
       }
