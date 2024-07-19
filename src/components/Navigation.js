@@ -40,8 +40,8 @@ function Navigation() {
             <Nav className="ms-auto">
               {!isRegisterPath && (
                 <>
-                  <LinkContainer to="/">
-                    <Nav.Link className="nav-center" style={{ color: "#cfcfcf" }}>Home</Nav.Link>
+                  <LinkContainer to="/search">
+                    <Nav.Link className="nav-center" style={{ color: "#cfcfcf" }}>Search</Nav.Link>
                   </LinkContainer>
                 </>
               )}
